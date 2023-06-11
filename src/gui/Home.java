@@ -390,7 +390,7 @@ public class Home extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dm);
         table.setRowSorter(tr);
         
-        tr.setRowFilter(RowFilter.regexFilter(query));
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + searchTextField.getText()));
         
     }
     

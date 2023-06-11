@@ -4,7 +4,7 @@ In this repo, I made a password manager named **Conceal** with **Java Swing**
 
 
 
-### How to Run?
+## How to Run?
 
 Follow the step-by-step tutorial below on how to run the program:
 
@@ -14,11 +14,18 @@ Follow the step-by-step tutorial below on how to run the program:
 4. Double click the file and the program will run
 5. You can either Sign Up to make a new account or use this email and password:
    
+
 **Email:** lenno@gmail.com **|** **Password:** 12as!@AS
 
 
 
-### Screenshots
+## Class Diagram
+
+![class-diagram](screenshots\class-diagram.png)
+
+
+
+## Screenshots
 
 <img src="screenshots\login-window.png" alt="login-window" width="500" align="left"/>
 
