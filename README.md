@@ -17,24 +17,24 @@ Follow the step-by-step tutorial below on how to run the program:
 
 ### Screenshots
 
-<img src="screenshots\login-window.png" alt="login-window" style="zoom: 33%;" align="left"/>
+<img src="screenshots\login-window.png" alt="login-window" width="500" align="left"/>
 
 
 
-<img src="screenshots\signup-window.png" alt="signup-window" style="zoom: 33%;" align="left"/>
+<img src="screenshots\signup-window.png" alt="signup-window" width="500" align="left"/>
 
 
 
-<img src="screenshots\home-window.png" alt="home-window" style="zoom: 33%;" align="left"/>
+<img src="screenshots\home-window.png" alt="home-window" width="500" align="left"/>
 
 
 
-<img src="screenshots\addcredential-window.png" alt="addcredential-window" style="zoom: 33%;" align="left" />
+<img src="screenshots\addcredential-window.png" alt="addcredential-window" width="500" align="left" />
 
 
 
-<img src="screenshots\editcredential-window.png" alt="editcredential-window" style="zoom: 33%;" align="left"/>
+<img src="screenshots\editcredential-window.png" alt="editcredential-window" width="500" align="left"/>
 
 
 
-<img src="screenshots\viewcredential-window.png" alt="viewcredential-window" style="zoom: 33%;" align="left"/>
+<img src="screenshots\viewcredential-window.png" alt="viewcredential-window" width="500" align="left"/>
