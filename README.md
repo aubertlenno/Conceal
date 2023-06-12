@@ -21,7 +21,7 @@ Follow the step-by-step tutorial below on how to run the program:
 
 ## Class Diagram
 
-![class-diagram](screenshots\class-diagram.png)
+<img src="screenshots\class-diagram.png" alt="class-diagram"/>
 
 
 
