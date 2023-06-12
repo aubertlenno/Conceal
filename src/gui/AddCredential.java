@@ -250,7 +250,7 @@ public class AddCredential extends javax.swing.JFrame implements Check{
         // Initialize variables to track presence of different types of special characters
         int n = input.length();
         boolean hasLower = false, hasUpper = false, hasDigit = false, specialChar = false;
-        Set<Character> set = new HashSet<Character>(
+        Set<Character> set = new HashSet<>(
                         Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
         
         // Iterate over characters in the input to verify if it contains a lower case, upper case, number, and special character

@@ -302,7 +302,7 @@ public class Signup extends javax.swing.JFrame implements Check{
         }
 
         boolean hasLowerCase = false, hasUpperCase = false, hasDigit = false, hasSpecialChar = false;
-        Set<Character> specialChars = new HashSet<Character>(Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
+        Set<Character> specialChars = new HashSet<>(Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
 
         // Check each character in the password for the required conditions.
         for (char ch : password.toCharArray()) {
