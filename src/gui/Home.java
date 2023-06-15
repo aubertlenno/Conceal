@@ -10,7 +10,6 @@ import java.io.*;
 import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.Account;
 
@@ -255,12 +254,16 @@ public class Home extends javax.swing.JFrame {
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
         // Check if the user has selected a credential row.
-        if (getSelectedCredName() == null && getSelectedUsername() == null && getSelectedPassword() == null) {
+        if (getSelectedCredName() == null && getSelectedUsername() 
+                == null && getSelectedPassword() == null) {
             // Show an error message if no credential row is selected.
-            JOptionPane.showMessageDialog(this, "You must select a credential row before choosing to view, modify or delete", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                    "You must select a credential row before choosing to view, modify or delete", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
         } else {
             // Open ViewCredential window
-            ViewCredential view = new ViewCredential(new Account(accName, accEmail, accPass));
+            ViewCredential view = new ViewCredential(new Account(accName, 
+                    accEmail, accPass));
             view.nameTextField.setText(getSelectedCredName());
             view.usernameTextField.setText(getSelectedUsername());
             view.passwordField.setText(getSelectedPassword());
@@ -272,7 +275,8 @@ public class Home extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         // Open AddCredential window
-        AddCredential add = new AddCredential(new Account(accName, accEmail, accPass));
+        AddCredential add = new AddCredential(new Account(accName, 
+                accEmail, accPass));
         add.setTitle("Conceal");
         add.setVisible(true);
         add.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -292,8 +296,8 @@ public class Home extends javax.swing.JFrame {
         // Check if a credential has been selected or not
         if (getSelectedCredName() == null && getSelectedUsername() == null) {
             JOptionPane.showMessageDialog(this,
-                "You must select a credential row before choosing to view, modify or delete", "Error!",
-                JOptionPane.ERROR_MESSAGE);
+                "You must select a credential row before choosing to view, modify or delete", 
+                "Error!", JOptionPane.ERROR_MESSAGE);
         } else {
             // Open EditCredential window
             Account acc = new Account(accName, accEmail, accPass);
@@ -308,16 +312,21 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Check whether a line is already selected or not
         if (getSelectedCredName() == null && getSelectedUsername() == null && getSelectedPassword() == null) {
-            JOptionPane.showMessageDialog(this, "You must select a credential row before choosing to view, edit or delete", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                    "You must select a credential row before choosing to view, edit or delete", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
         
         // Show confirmation pop-up
         } else {
             int option = JOptionPane.OK_CANCEL_OPTION;
-            int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this credential?", "Delete Credential", option);
+            int result = JOptionPane.showConfirmDialog(this, 
+                    "Are you sure you want to delete this credential?", 
+                    "Delete Credential", option);
             if (result == JOptionPane.OK_OPTION) {
                 // Delete the credential
                 deleteCredLine(getSelectedCredentialLine());
-                JOptionPane.showMessageDialog(this, "Your credential was deleted successfully", "Delete Credential", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Your credential was deleted successfully", 
+                        "Delete Credential", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         
@@ -396,15 +405,15 @@ public class Home extends javax.swing.JFrame {
     
     // Method to create a BufferedReader for a specific file.
     public BufferedReader getFileReader() {
-    try {
-        // Instantiate and return a BufferedReader for the credentials file.
-        return new BufferedReader(new FileReader(new File("src/file/credentials/" + accName + ".txt")));
-    } catch (FileNotFoundException e) {
-        // Output the error if the file doesn't exist.
-        e.printStackTrace();
-        return null;
+        try {
+            // Instantiate and return a BufferedReader for the credentials file.
+            return new BufferedReader(new FileReader(new File("src/file/credentials/" + accName + ".txt")));
+        } catch (FileNotFoundException e) {
+            // Output the error if the file doesn't exist.
+            e.printStackTrace();
+            return null;
+        }
     }
-}
 
     // This method retrieves the name of the selected credential from the table.
     public String getSelectedCredName() {
@@ -428,7 +437,8 @@ public class Home extends javax.swing.JFrame {
                 while ((line = reader.readLine()) != null) {
                     // If the line matches the selected credential, extract and return the password.
                     String[] parts = line.split(":");
-                    if (parts[1].equals(getSelectedCredName()) && parts[2].equals(getSelectedUsername())) {
+                    if (parts[1].equals(getSelectedCredName()) 
+                            && parts[2].equals(getSelectedUsername())) {
                         return parts[3];
                     }
                 }
@@ -472,7 +482,8 @@ public class Home extends javax.swing.JFrame {
             }
 
             // Replace the specified line with a placeholder indicating deletion.
-            String updatedContent = content.toString().replace(line, "deleted:deleted:deleted:deleted");
+            String updatedContent = content.toString().replace(
+                    line, "deleted:deleted:deleted:deleted");
 
             // Write the modified content back to the file.
             try (FileWriter writer = new FileWriter(file)) {

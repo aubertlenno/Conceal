@@ -17,7 +17,7 @@ import model.SHA3;
 public class Login extends javax.swing.JFrame {
 
     /**
-     * Creates new form Login2
+     * Creates new form Login
      */
     public Login() {
         initComponents();
@@ -198,21 +198,24 @@ public class Login extends javax.swing.JFrame {
         if (emailText.isBlank() || passText.isBlank()) {
             email_TextField.setText("");
             passwordField.setText("");
-            JOptionPane.showMessageDialog(this, "All fields are required", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "All fields are required", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
 
         // Check whether the email is valid or not
         } else if (!isValid(emailText)) {
             email_TextField.setText("");
             email_TextField.setText("");
             passwordField.setText("");
-            JOptionPane.showMessageDialog(this, "The email address you have entered is invalid", "Error!",
-                            JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The email address you have entered is invalid", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
 
         // Check if the email and password correct or not
         } else if (isCorrect(emailText, passText)) {
             // If correct, open the Home window
-            JOptionPane.showMessageDialog(this, "Login Successful", "Success!", JOptionPane.INFORMATION_MESSAGE);
-            Account acc = new Account(getAccountHolderName(emailText, passText), emailText, passText);
+            JOptionPane.showMessageDialog(this, "Login Successful", 
+                    "Success!", JOptionPane.INFORMATION_MESSAGE);
+            Account acc = new Account(getAccountHolderName(emailText, 
+                    passText), emailText, passText);
             Home main = new Home(acc);
             main.setVisible(true);
             setVisible(false);
@@ -220,8 +223,8 @@ public class Login extends javax.swing.JFrame {
         } else {
             // If not correct, show a message dialog
             passwordField.setText("");
-            JOptionPane.showMessageDialog(this, "Invalid username or password", "Error!",
-                            JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Invalid username or password", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 

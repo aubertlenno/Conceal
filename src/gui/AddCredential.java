@@ -4,8 +4,6 @@
  */
 package gui;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -193,32 +191,35 @@ public class AddCredential extends javax.swing.JFrame implements Check{
 
         if (titleTextField.getText().isBlank() || usernameTextField.getText().isBlank()
                         || passwordField.getText().isBlank() || confirmPasswordField.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "All fields are required", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "All fields are required", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
 
         // Confirm if the password and confirm password fields match
 
         } else if (!confirmPasswordField.getText().equals(passwordField.getText())) {
             passwordField.setText("");
             confirmPasswordField.setText("");
-            JOptionPane.showMessageDialog(this, "The passwords don't match", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The passwords don't match", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
         } else {
 
             // Verify the strength of the entered password and give pop up message if it is a weak password
 
             if (!isStrong(passwordField.getText())) {
-                JOptionPane.showMessageDialog(this, "Weak Password!", "Warning!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Weak Password!", 
+                        "Warning!", JOptionPane.WARNING_MESSAGE);
             }
 
             // Create a new credential, save it to the file containing all the credentials, 
             // notify the user of successful credential addition, and close the add credential screen
 
-            Credential cred = new Credential(accEmail, titleTextField.getText(), usernameTextField.getText(),
-                            passwordField.getText(), accName);
+            Credential cred = new Credential(accEmail, titleTextField.getText(), 
+                    usernameTextField.getText(), passwordField.getText(), accName);
 
         
             cred.saveToFile();
-            JOptionPane.showMessageDialog(this, "Your credential was added successfully", "Add Credential",
-                            JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Your credential was added successfully", 
+                    "Add Credential", JOptionPane.INFORMATION_MESSAGE);
             setVisible(false);
             dispose();
             
@@ -245,15 +246,17 @@ public class AddCredential extends javax.swing.JFrame implements Check{
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     // Method to check the strength of a password input
+    @Override
     public boolean isStrong(String input) {
         
         // Initialize variables to track presence of different types of special characters
         int n = input.length();
         boolean hasLower = false, hasUpper = false, hasDigit = false, specialChar = false;
-        Set<Character> set = new HashSet<>(
-                        Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
+        Set<Character> set = new HashSet<>(Arrays.asList('!', '@', '#', 
+                '$', '%', '^', '&', '*', '(', ')', '-', '+'));
         
-        // Iterate over characters in the input to verify if it contains a lower case, upper case, number, and special character
+        // Iterate over characters in the input to verify if it contains a lower case, 
+        // upper case, number, and special character
         for (char i : input.toCharArray()) {
             if (Character.isLowerCase(i))
                     hasLower = true;

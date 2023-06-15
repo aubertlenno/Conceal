@@ -228,30 +228,37 @@ public class Signup extends javax.swing.JFrame implements Check{
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
         // Check if any field is blank
-        if (nameTextField.getText().isBlank() || emailTextField.getText().isBlank() || passwordField.getText().isBlank() || confirmPasswordField.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "All fields are required", "Error!", JOptionPane.ERROR_MESSAGE);
+        if (nameTextField.getText().isBlank() || emailTextField.getText().isBlank() || 
+                passwordField.getText().isBlank() || confirmPasswordField.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "All fields are required", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
         }
         
         // Check if the name inputted contains any number
         else if (nameTextField.getText().matches(".*\\d.*")) { 
-            JOptionPane.showMessageDialog(this, "The name field must not contain any numbers", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The name field must not contain any numbers", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
         }
 
         // Check if the email entered is valid
         else if (!isValid(emailTextField.getText())) {
-            JOptionPane.showMessageDialog(this, "The email address you have entered is invalid", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The email address you have entered is invalid", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
         }
 
         // Check if the password entered is strong
         else if (!isStrong(passwordField.getText())) {
-            JOptionPane.showMessageDialog(this, "Your password must contain at least 8 characters, an uppercase letter, a lowercase letter, a number and a special character", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Your password must contain at least 8 characters, "
+                    + "an uppercase letter, a lowercase letter, a number and a special character", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
         }
 
         // Check if the inputted password field and confirm password field match
         else if (!confirmPasswordField.getText().equals(passwordField.getText())) {
             passwordField.setText("");
             confirmPasswordField.setText("");
-            JOptionPane.showMessageDialog(this, "The passwords don't match", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The passwords don't match", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
             
         } else {
             // If everything's OK, a new account is created and saved in a .txt file
@@ -259,14 +266,16 @@ public class Signup extends javax.swing.JFrame implements Check{
             // Hash the password to put in the .txt file
             String passSalt = SHA3.getSalt(16);
             String hashedPass = SHA3.convertBytesToHex(SHA3.hash(passSalt + passwordField.getText()));
-            Account acc = new Account(nameTextField.getText(), emailTextField.getText(), hashedPass, passSalt);
+            Account acc = new Account(nameTextField.getText(), emailTextField.getText(), 
+                    hashedPass, passSalt);
             acc.saveAccountSecure();
             try {
                 createAccountFile(nameTextField.getText());
             } catch (IOException ex) {
                 Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
             }
-            JOptionPane.showMessageDialog(this, "Your account has been created successfully", "Account Creation", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Your account has been created successfully", 
+                    "Account Creation", JOptionPane.INFORMATION_MESSAGE);
             
             // Close the signup window and open the login window
             Login login = new Login();
@@ -296,13 +305,15 @@ public class Signup extends javax.swing.JFrame implements Check{
     }
 
     // Checks if a given password meets strength requirements.
+    @Override
     public boolean isStrong(String password) {
         if (password == null || password.length() < 8) {
             return false;
         }
 
         boolean hasLowerCase = false, hasUpperCase = false, hasDigit = false, hasSpecialChar = false;
-        Set<Character> specialChars = new HashSet<>(Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
+        Set<Character> specialChars = new HashSet<>(Arrays.asList(
+                '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
 
         // Check each character in the password for the required conditions.
         for (char ch : password.toCharArray()) {

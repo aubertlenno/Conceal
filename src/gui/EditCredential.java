@@ -229,7 +229,8 @@ public class EditCredential extends javax.swing.JFrame implements Check{
         if (nameTextField.getText().isBlank() || usernameTextField.getText().isBlank()
             || curPasswordField.getText().isBlank() || newPasswordField.getText().isBlank()
             || confPasswordField.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "All fields are required", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "All fields are required", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
 
         // Checking if the inputted current password matches the password saved in the credential.txt file
         } else if (!curPasswordField.getText().equals(getCurrentPassword())) {
@@ -241,7 +242,8 @@ public class EditCredential extends javax.swing.JFrame implements Check{
         } else if (!confPasswordField.getText().equals(newPasswordField.getText())) {
             newPasswordField.setText("");
             confPasswordField.setText("");
-            JOptionPane.showMessageDialog(this, "The passwords don't match", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The passwords don't match", 
+                    "Error!", JOptionPane.ERROR_MESSAGE);
 
         // Replace the old credential information with the new one
         } else {
@@ -249,11 +251,13 @@ public class EditCredential extends javax.swing.JFrame implements Check{
             
             // Give "Weak password!" message if the new password is considered weak
             if (!isStrong(newPasswordField.getText())) {
-                JOptionPane.showMessageDialog(this, "Weak Password!", "Warning!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Weak Password!", 
+                        "Warning!", JOptionPane.WARNING_MESSAGE);
             }
             
             // Notify the user that the edit is successful
-            JOptionPane.showMessageDialog(this, "Your credential was edited successfully", "Edit Credential",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Your credential was edited successfully", 
+                    "Edit Credential",JOptionPane.INFORMATION_MESSAGE);
             
             // Close the window
             setVisible(false);
@@ -275,7 +279,8 @@ public class EditCredential extends javax.swing.JFrame implements Check{
         int n = input.length();
         boolean hasLower = false, hasUpper = false, hasDigit = false, specialChar = false;
         Set<Character> set = new HashSet<>(
-                    Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
+                    Arrays.asList('!', '@', '#', '$', '%', '^', '&', 
+                            '*', '(', ')', '-', '+'));
         
         // Iterate over characters in the input to verify if it contains a lower case, upper case, number, and special character
         for (char i : input.toCharArray()) {
